@@ -1,0 +1,20 @@
+15.0d0       !ion temp (eV)
+15.0d0       !electron temp (eV)
+2.0e13       !density of ions (/m^3)
+0.0d0        !applied potential (Volts)
+0.0d0        !angle of incidence (degrees)
+1.0d0        !at. number of incident atom
+6.0d0        !at. number of target atom
+1.008d0      !at. weight of incident atom (amu)
+12.01d0      !at. weight of target atom (amu)
+7.37d0       !Target Surface binding energy (eV)
+1.8d0        !Target density (gms/cm^3)
+3.0          !Target thickness (cm)
+300.0d0      !Target temp at cold end (K)
+1.3d-5       !Parameter a - heatdiff
+6.0d-3       !Parameter b - heatdiff
+-40181.0d0   !Parameter A
+14.8d0       !Parameter B
+0.4d0        !Sticking coeff
+0.0          !Returning fraction
+3.0d0        !gamma (type of flow)

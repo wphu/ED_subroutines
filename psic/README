@@ -1,0 +1,14 @@
+smpsi.f  ->  Example main program demonstrating calls to the subroutines.
+physput.f -> Subroutine for physical sputtering.
+chmsput.f -> Subroutine for chemical sputtering.
+ressput.f -> Subroutine for radiation enhanced sublimation.
+bshevi.f  -> Subroutine for backscattering coefficients.
+thermev.f -> Subroutine for thermal evaporation.
+heatdif.f -> Subroutine for heat diffusion.
+
+Note: It will be nice to rewrite these programs in a object oriented way
+      which will reuse the various repeated constructs and will also
+      provide a insight into the physical processes. This has not been
+      done in these set of subroutines. The excuse being that these
+      subroutines were written at different times for addressing
+      different problems and therefore dont reuse parts.
