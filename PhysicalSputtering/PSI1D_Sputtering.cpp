@@ -72,7 +72,7 @@ void PSI1D_Sputtering::init()
 
 
 
-// from Shuyu Dai' c code
+// theta: the angle made by the incident projectile with the normal to the target surface
 double PSI1D_Sputtering::phy_sput_yield(double ke, double theta)
 {
     double	 reducedE, stopcs, yldphy;

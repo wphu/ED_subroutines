@@ -12,42 +12,61 @@ using namespace std;
 // ---------------------------------------------------------------------------------------------------------------------
 int main (int argc, char* argv[])
 {
-	double rn[91][500], re[91][500];
-	int nz1;         // atomic number of incident atomic
-	int m1;          // atomic mass of incident atomic (amu)
+	double rn[90][500], re[90][500];
+	int an1;         // atomic number of incident atomic
+	int am1;          // atomic mass of incident atomic (amu)
 	int ne;             // number of constituent elements in the target.
-	vector<int> nz2;	// array for atomic numbers of the constituents.
+	vector<int> an2;	// array for atomic numbers of the constituents.
 	vector<int> nw;     // array for relative numbers of the constituents.
 	double energy, theta, ee, rnion, reion;
 	ofstream ofile_rn, ofile_re;
 
-	nz1 = 20;
-	m1 = 40;
+/*
+	// D -> W
+	an1 = 1;
+	am1 = 2;
 	ne = 1;
-	nz2.push_back(74);
+	an2.push_back(74);
+	nw.push_back(1);
+*/
+
+/*
+	// C -> W
+	an1 = 6;
+	am1 = 12;
+	ne = 1;
+	an2.push_back(74);
+	nw.push_back(1);
+*/
+	// Fe -> C
+	an1 = 26;
+	am1 = 56;
+	ne = 1;
+	an2.push_back(6);
 	nw.push_back(1);
 
-	PSI1D_Backscattering bs = PSI1D_Backscattering( nz1, m1, ne, nz2, nw );
-	for(int i = 0; i < 91; i++)
+
+	PSI1D_Backscattering bs = PSI1D_Backscattering( an1, am1, ne, an2, nw );
+	for(int i = 1; i <= 90; i++)
 	{
-		for(int j = 0; j < 500; j++)
+		for(int j = 1; j <= 500; j++)
 		{
 			theta = 1.0 * i;
-			energy = 0.1 * (j+1);
+			energy = 1.0 * j;
 			bs.scatter(rnion, reion, theta, energy);
-			rn[i][j] = rnion;
-			re[i][j] = reion;
+			rn[i-1][j-1] = rnion;
+			re[i-1][j-1] = reion;
 		}
 	}
 
 	ofile_rn.open("rn.txt");
 	ofile_re.open("re.txt");
-	for(int i = 0; i < 91; i++)
+	for(int i = 1; i <= 90; i++)
 	{
-		for(int j = 0; j < 500; j++)
+		for(int j = 1; j <= 500; j++)
 		{
-			ofile_rn<<setw(10)<<rn[i][j];
-			ofile_re<<setw(10)<<re[i][j];
+			ofile_rn<<setw(15)<<rn[i-1][j-1];
+			ofile_re<<setw(15)<<re[i-1][j-1];
 		}
 		ofile_rn<<endl;
 		ofile_re<<endl;
