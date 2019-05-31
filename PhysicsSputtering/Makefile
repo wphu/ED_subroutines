@@ -1,5 +1,5 @@
 PRGM		=main
-CC			=icc
+CC			=g++
 CFLAGS		=-O2
 CCOMPILE	=$(CC) $(CFLAGS)
 CLINK		=$(CC)
