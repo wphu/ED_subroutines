@@ -40,7 +40,7 @@ int main (int argc, char* argv[])
 	density = 19.35;
 */
 
-
+/*
 	// D -> W
 	an1 = 1.0;
 	am1 = 2.0;
@@ -48,7 +48,15 @@ int main (int argc, char* argv[])
 	am2 = 183.85;
 	es = 11.75;
 	density = 19.35;
+*/
 
+	// D -> C
+	an1 = 1.0;
+	am1 = 2.0;
+	an2 = 6.0;
+	am2 = 12.0;
+	es = 7.41;
+	density = 2.248;
 
 	PSI1D_Sputtering st = PSI1D_Sputtering( an1, am1, an2, am2, es, density );
 	for(int i = 1; i <= 90; i++)

@@ -64,7 +64,7 @@ void PSI1D_Sputtering::init()
     etf = 30.74 * (am1+am2)/am2  * an1 * an2 * pow( ( pow(an1,(2.0/3.0)) +  pow(an2,(2.0/3.0)) ),(1.0/2.0) ) ;
     aL = 0.4685 * pow( ( pow(an1,(2.0/3.0)) +  pow(an2,(2.0/3.0)) ),(-1.0/2.0) );
 
-	n = 1.0e-24 * density * 6.0221e23 / am2;
+	//n = 1.0e-24 * density * 6.0221e23 / am2;
 	Ro = pow((am2/density/6.0221e23), (1.0/3.0))*1.0e8;
 
 }
