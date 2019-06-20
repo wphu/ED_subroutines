@@ -38,9 +38,29 @@ int main (int argc, char* argv[])
 	an2.push_back(74);
 	nw.push_back(1);
 */
+
+/*
 	// Fe -> C
 	an1 = 26;
 	am1 = 56;
+	ne = 1;
+	an2.push_back(6);
+	nw.push_back(1);
+*/
+
+/*
+	// D -> C
+	an1 = 1;
+	am1 = 2;
+	ne = 1;
+	an2.push_back(6);
+	nw.push_back(1);
+*/
+
+
+	// C -> C
+	an1 = 6;
+	am1 = 12;
 	ne = 1;
 	an2.push_back(6);
 	nw.push_back(1);
@@ -73,4 +93,21 @@ int main (int argc, char* argv[])
 	}
 	ofile_rn.close();
 	ofile_re.close();
+
+	theta = 0.0;
+	energy = 5.0;
+	bs.scatter(rnion, reion, theta, energy);
+	cout<<rnion<<" "<<reion<<"  "<<theta<<"  "<<energy<<endl;
+
+	return 0;
+	
+	int i= 0;
+	while(rnion < 1.0)
+	{
+		bs.scatter(rnion, reion, theta, energy);
+		i++;
+	}
+	cout<<rnion<<" "<<reion<<"  "<<theta<<"  "<<energy<<"  "<<i<<endl;
+
+
 }

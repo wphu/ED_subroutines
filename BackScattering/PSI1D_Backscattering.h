@@ -2,13 +2,18 @@
 Subroutine to evaluate empirical formulas for number and energy
 Backscattering coefficients of light ions incident on Elemental
 and Compound targets
-Ref: Subroutines for some plasma surface interaction processes:
+ref1:Subroutines for some plasma surface interaction processes:
      hpysical sputtering, chemical erosion, radiation enhanced
      sublimation, backscattering and thermal evaporation.
+
+ref2:Present Status of Data Compilation on Ion Backscattering.
 
 These formulas are not valid at low incident energies (below 10 eV) 
 because they do not account for the binding of projectiles chemically 
 to the surface at low energies [26].
+
+!original fortran subroutine for heary projectile is wrong, rn will excell 1. the code has been fixed
+as ref2, but not valid for low energy (a few eV), like C -> C below 5.0 eV not valid. 
 ================================================================*/
 #ifndef PSI1D_BACKSCATTERING_H
 #define PSI1D_BACKSCATTERING_H
@@ -25,9 +30,9 @@ public:
     PSI1D_Backscattering(
         int an1_in,
         int am1_in,
-        int ne_in,
-        vector<int> an2_in,
-        vector<int> nw_in );
+        int ne2_in,
+        vector<int> an2_vector_in,
+        vector<int> nw2_vector_in );
 
 
     ~PSI1D_Backscattering();
@@ -38,9 +43,9 @@ public:
     // the name is from original fortran77 code
     int an1;         // atomic number of incident atomic
     int am1;          // atomic mass of incident atomic (amu)
-    int ne;             // number of constituent elements in the target.
-    vector<int> an2;	// array for atomic numbers of the constituents.
-    vector<int> nw;     // array for relative numbers of the constituents.
+    int ne2;             // number of constituent elements in the target.
+    vector<int> an2_vector;	// array for atomic numbers of the constituents.
+    vector<int> nw2_vector;     // array for relative numbers of the constituents.
     //	example :   for Tritium ions of 1 KeV energy incident on the TiO2
     //		        ( Titanium Dioxide ) target, Energy=1000 , an1=1 ,
     //		        am1=3 , ne=2 , an2(1)=22 , nw(1)=1 , an2(2)=8 and
@@ -169,6 +174,13 @@ public:
     {
         double f = sqrt( pow(z1, 2.0/3.0) + pow(z2, 2.0/3.0) );
         return 0.032534 * e / ( z1 * z2 * (1.0 + a1/a2) * f );
+    }
+
+    //equation 2 from ref2
+    inline double fneps_heavy(double e, double z1, double a1, double z2, double a2 )
+    {
+        double f = sqrt( pow(z1, 2.0/3.0) + pow(z2, 2.0/3.0) );
+        return 32.534 * e * a2 / ( z1 * z2 * (a1 + a2) * f );
     }
 
     inline double rne(double th, double r0, double as1, double as2)
